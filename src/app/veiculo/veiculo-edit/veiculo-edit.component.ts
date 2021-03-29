@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { VeiculoService } from 'src/app/core/veiculo.service';
 import { Veiculo } from '../shared/veiculo';
 import { ActivatedRoute } from '@angular/router';
+import { VeiculoService } from 'src/app/core/veiculo.service';
 import { AlertService } from 'src/app/core/alert.service';
 
 @Component({
@@ -36,8 +36,7 @@ export class VeiculoEditComponent implements OnInit {
   onSubmit(form: NgForm) {
     if(form.valid) {
       if(this.veiculo._id) {
-        this.veiculoService.updateVeiculo(this.veiculo, this.veiculo._id).subscribe(result => {
-          console.log(result);
+        this.veiculoService.updateVeiculo(this.veiculo, this.veiculo._id).subscribe(() => {
           this.alertService.showAlertUpdateSuccess();
         },
         (error) => {
@@ -46,9 +45,9 @@ export class VeiculoEditComponent implements OnInit {
         });
       }
       else {
-        this.veiculoService.addVeiculo(this.veiculo).subscribe(result => {
-          console.log(result);
+        this.veiculoService.addVeiculo(this.veiculo).subscribe(() => {
           this.alertService.showAlertCreateSuccess();
+          form.resetForm();
         },
         (error) => {
           this.alertService.showAlertFail();

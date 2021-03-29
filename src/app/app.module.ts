@@ -11,13 +11,15 @@ import { VeiculoListComponent } from './veiculo/veiculo-list/veiculo-list.compon
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { HttpClientModule } from '@angular/common/http';
+import { YesNoPipe } from './shared/pipes/yes-no.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     VeiculoEditComponent,
     VeiculoViewComponent,
-    VeiculoListComponent
+    VeiculoListComponent,
+    YesNoPipe
   ],
   imports: [
     BrowserModule,

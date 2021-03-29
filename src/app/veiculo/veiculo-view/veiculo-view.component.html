@@ -1,1 +1,18 @@
-<p>veiculo-view works!</p>
+<div class="container">
+    <mat-card>
+        <mat-card-title>{{ veiculo?.veiculo }}</mat-card-title>
+
+        <mat-card-content>
+            <mat-list>
+                <mat-list-item>Marca: {{ veiculo?.marca }}</mat-list-item>
+                <mat-list-item>Descrição: {{ veiculo?.descricao }}</mat-list-item>
+                <mat-list-item>Ano: {{ veiculo?.ano }}</mat-list-item>
+                <mat-list-item>Vendido: {{ veiculo?.vendido | yesNo }}</mat-list-item>
+            </mat-list>
+
+            <mat-card-actions>
+                <button type="button" mat-stroked-button [routerLink]="['/']">Voltar</button>
+            </mat-card-actions>
+        </mat-card-content>
+    </mat-card>
+</div>
