@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { Veiculo } from '../veiculo/shared/veiculo';
 
 @Injectable({
   providedIn: 'root'
@@ -19,11 +20,11 @@ export class VeiculoService {
     return this.http.get(`${this.apiHost}/veiculos/${id}`);
   }
 
-  addVeiculo(data): Observable<any> {
+  addVeiculo(data: Veiculo): Observable<any> {
     return this.http.post(`${this.apiHost}/veiculos`, data);
   }
 
-  updateVeiculo(data, id: number): Observable<any> {
+  updateVeiculo(data: Veiculo, id: number): Observable<any> {
     return this.http.put(`${this.apiHost}/veiculos/${id}`, data);
   }
 

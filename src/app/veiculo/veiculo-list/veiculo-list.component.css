@@ -6,9 +6,16 @@ table.mat-table {
 th.mat-header-cell {
     font-size: 17px;
     color: black;
+    width: 50px;
+}
+
+td.mat-cell {
+    height: 60px;
+    padding: 1px;
 }
 
 button:not(:last-child) {
     margin-right: 10px;
     background-color: #2B78FE !important;
 }
+
