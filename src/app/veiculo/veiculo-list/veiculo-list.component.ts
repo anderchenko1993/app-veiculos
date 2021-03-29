@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AlertService } from 'src/app/core/alert.service';
 import { VeiculoService } from 'src/app/core/veiculo.service';
 
 @Component({
@@ -11,27 +12,31 @@ export class VeiculoListComponent implements OnInit {
   columnsToDisplay: string[] = ['veiculo', 'marca', 'descricao', 'ano', 'vendido', 'acoes'];
   veiculos: Object[];
 
-  constructor(private veiculoService: VeiculoService) { }
+  constructor(private veiculoService: VeiculoService, private alertService: AlertService) { }
 
   ngOnInit(): void {
     this.getAll();
   }
 
-  async getAll() {
-    await this.veiculoService.list().subscribe(data => {
+  getAll() {
+    this.veiculoService.getVeiculos().subscribe(data => {
       this.veiculos = data;
     });
   }
 
   async delete(id: number) {
-    await this.veiculoService.delete(id).subscribe(() => {
-      this.getAll();
-    },
-    (error) => {
-      alert("Erro ao executar ação, por favor, tente novamente.");
-      console.warn(error);
-    });
-   
+    let confirm = await this.alertService.showAlertDeleteDialog();
+
+    if(confirm) {
+      this.veiculoService.deleteVeiculo(id).subscribe(() => {
+        this.alertService.showConfirmDelete();
+        this.getAll();
+      },
+      (error) => {
+        this.alertService.showAlertFail();
+        console.warn(error);
+      });
+    }
   }
 
 

@@ -11,24 +11,23 @@ export class VeiculoService {
 
   constructor(private http: HttpClient) { }
 
-  list(): Observable<any> {
+  getVeiculos(): Observable<any> {
     return this.http.get(`${this.apiHost}/veiculos`);
   }
 
-  add(data): Observable<any> {
-    return this.http.post(`${this.apiHost}/veiculos/add`, data);
-  }
-
-  update(data, id): Observable<any> {
-    return this.http.put(`${this.apiHost}/veiculos/${id}`, data);
-  }
-
-  show(id): Observable<any> {
+  getVeiculo(id: number): Observable<any> {
     return this.http.get(`${this.apiHost}/veiculos/${id}`);
   }
 
-  delete(id): Observable<any> {
-    return this.http.delete(`${this.apiHost}/veiculos/${id}`);
+  addVeiculo(data): Observable<any> {
+    return this.http.post(`${this.apiHost}/veiculos`, data);
   }
 
+  updateVeiculo(data, id: number): Observable<any> {
+    return this.http.put(`${this.apiHost}/veiculos/${id}`, data);
+  }
+
+  deleteVeiculo(id: number): Observable<any> {
+    return this.http.delete(`${this.apiHost}/veiculos/${id}`);
+  }
 }

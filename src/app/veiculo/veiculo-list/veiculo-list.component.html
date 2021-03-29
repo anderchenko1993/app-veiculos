@@ -2,7 +2,9 @@
     <mat-card>
         <mat-card-title>Lista de Veículos</mat-card-title>
 
-
+        <button mat-raised-button color="primary" [routerLink]="['veiculos/add']">
+            Cadastrar veículo
+        </button>
         
         <mat-card-content>
             <table mat-table [dataSource]="veiculos">
