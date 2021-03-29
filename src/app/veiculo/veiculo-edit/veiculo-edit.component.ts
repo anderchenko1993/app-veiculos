@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { VeiculoService } from 'src/app/core/veiculo.service';
 
 @Component({
   selector: 'app-veiculo-edit',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VeiculoEditComponent implements OnInit {
 
-  constructor() { }
+  constructor(private veiculoService: VeiculoService) { }
+
+  @ViewChild('form') courseForm: NgForm;
+
 
   ngOnInit(): void {
+  }
+
+  onSubmit(form: NgForm) {
+
   }
 
 }

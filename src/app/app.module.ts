@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { VeiculoEditComponent } from './veiculo/veiculo-edit/veiculo-edit.component';
 import { VeiculoViewComponent } from './veiculo/veiculo-view/veiculo-view.component';
 import { VeiculoListComponent } from './veiculo/veiculo-list/veiculo-list.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material/material.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { VeiculoListComponent } from './veiculo/veiculo-list/veiculo-list.compon
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

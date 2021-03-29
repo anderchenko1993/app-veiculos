@@ -1,1 +1,44 @@
-<p>veiculo-edit works!</p>
+<div class="container">
+    <mat-card>
+        <mat-card-title>Cadastrar Veículo</mat-card-title>
+
+        <mat-card-content>
+            <form>
+                <mat-form-field>
+                    <mat-label>Veículo</mat-label>
+                    <input type="text" name="veiculo" matInput required>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Marca</mat-label>
+                    <input type="text" name="marca" matInput required>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Ano</mat-label>
+                    <input type="number" name="ano" matInput required>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Descrição</mat-label>
+                    <textarea type="text" name="veiculo" matInput required></textarea>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Vendido</mat-label>
+                    <select matNativeControl required>
+                        <option option="#"></option>
+                        <option value="1">Sim</option>
+                        <option value="0">Não</option>                    
+                      </select>
+                </mat-form-field>
+
+                <mat-card-actions>
+                    <button type="submit" mat-flat-button>Salvar</button>
+                    <button type="button" mat-stroked-button>Cancelar</button>
+                </mat-card-actions>
+            </form>
+        </mat-card-content>
+    </mat-card>    
+</div>
+
