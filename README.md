@@ -1,27 +1,33 @@
-# AppVeiculos
+ Setup
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.4.
+### Versionamento
 
-## Development server
+Para ter acesso ao código fonte do projeto é necessário efetuar o clone dos repositórios pelos links abaixo:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+**Repositório front-end:** https://github.com/anderchenko1993/app-veiculos
 
-## Code scaffolding
+**Repositório back-end:** https://github.com/anderchenko1993/api-veiculos
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Dependências
 
-## Build
+O front-end foi desenvolvido utilizando o Angular versão 11.1.2, e o back-end Nodejs versão 12.4.1. Ambos utilizam bibliotecas de terceiros, e será necessário baixar as suas dependências através do comando `npm install`.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+### Banco de dados
 
-## Running unit tests
+O projeto utiliza o banco de dados MongoDB que está hospedado na cloud pelo serviço [MongoDB Atlas].
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+A string de conexão já se encontra no código fonte no back-end, não sendo necessário nenhuma ação para configuração.
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Uso
 
-## Further help
+### Front-end
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Execute o comando `ng serve` para subir o servidor do Angular. Navegue para `http://localhost:4200/`. 
+
+### Back-end
+
+Execute o comando `npm start` para subir o servidor do Node.js. O servidor rodará no endereço `http://localhost:3000`.
+
+
+ [MongoDB Atlas]: <https://cloud.mongodb.com>
