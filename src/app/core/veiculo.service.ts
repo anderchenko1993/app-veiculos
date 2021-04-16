@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { Veiculo } from '../veiculo/veiculo';
 
@@ -17,7 +18,9 @@ export class VeiculoService {
   }
 
   getVeiculo(id: number): Observable<any> {
-    return this.http.get(`${this.apiHost}/veiculos/${id}`);
+    return this.http.get(`${this.apiHost}/veiculos/${id}`).pipe(
+      map((veiculo: Veiculo) => ({ ...veiculo, vendido: veiculo.vendido ? 1 : 0 })),
+    );
   }
 
   addVeiculo(data: Veiculo): Observable<any> {

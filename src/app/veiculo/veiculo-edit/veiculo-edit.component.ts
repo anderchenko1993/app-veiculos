@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Veiculo } from '../veiculo';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { VeiculoService } from 'src/app/core/veiculo.service';
 import { AlertService } from 'src/app/core/alert.service';
 
@@ -12,15 +12,25 @@ import { AlertService } from 'src/app/core/alert.service';
 })
 export class VeiculoEditComponent implements OnInit {
   veiculoForm: FormGroup;
-  veiculo: Veiculo;
-  acao: string = 'Cadastrar';
+  id: number;
+  isAddMode: boolean;
 
   constructor(private veiculoService: VeiculoService,
     private activatedRoute: ActivatedRoute,
+    private router: Router,
     private alertService: AlertService,
     private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
+    this.id = this.activatedRoute.snapshot.params['id'];
+    this.isAddMode = !this.id;
+
+    if(!this.isAddMode) {
+      this.veiculoService.getVeiculo(this.id).subscribe(veiculo => {
+        this.veiculoForm.patchValue(veiculo);
+      });
+    }
+
     this.veiculoForm = this.formBuilder.group({
       veiculo: ['', Validators.required],
       marca: ['', Validators.required],
@@ -28,48 +38,32 @@ export class VeiculoEditComponent implements OnInit {
       ano: ['', Validators.required],
       vendido: ['', Validators.required]
     });
-
-
-    // this.veiculo = new Veiculo();
-
-    // this.activatedRoute.params.subscribe(params => {
-    //   if(params['id']) {
-    //     this.veiculoService.getVeiculo(params['id']).subscribe(veiculo => {
-    //       veiculo.vendido = veiculo.vendido ? 1 : 0;
-    //       this.veiculo = veiculo;
-    //     });
-
-    //     this.acao = "Editar";
-    //   }
-    // });
   }
 
   onSubmit() {
     if(this.veiculoForm.valid) {
-      console.log(this.veiculoForm.getRawValue());
-    }
+      const veiculo = this.veiculoForm.getRawValue() as Veiculo;
 
-    // if(form.valid) {
-    //   if(this.veiculo._id) {
-    //     this.veiculoService.updateVeiculo(this.veiculo, this.veiculo._id).subscribe(() => {
-    //       this.alertService.showAlertUpdateSuccess();
-    //     },
-    //     (error) => {
-    //       this.alertService.showAlertFail();
-    //       console.warn(error);
-    //     });
-    //   }
-    //   else {
-    //     this.veiculoService.addVeiculo(this.veiculo).subscribe(() => {
-    //       this.alertService.showAlertCreateSuccess();
-    //       form.resetForm();
-    //     },
-    //     (error) => {
-    //       this.alertService.showAlertFail();
-    //       console.warn(error);
-    //     });
-    //   }
-    // }
+      if(!this.id) {
+        this.veiculoService.addVeiculo(veiculo).subscribe(() => {
+          this.alertService.showAlertCreateSuccess();
+          this.router.navigate(['/']);
+        },
+        (error) => {
+          this.alertService.showAlertFail();
+          console.warn(error);
+        });
+      } else {
+        this.veiculoService.updateVeiculo(veiculo, this.id).subscribe(() => {
+          this.alertService.showAlertUpdateSuccess();
+          this.router.navigate(['/']);
+        },
+        (error) => {
+          this.alertService.showAlertFail();
+          console.warn(error);
+        });
+      }
+    }
   }
 
 }

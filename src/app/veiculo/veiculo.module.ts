@@ -8,6 +8,7 @@ import { VeiculoRoutingModule } from "./veiculo-routing.module";
 import { VeiculoComponent } from './veiculo.component';
 import { YesNoPipe } from "../shared/pipes/yes-no.pipe";
 import { MaterialModule } from "../material/material.module";
+import { MensagemComponent } from "../shared/components/mensagem/mensagem.component";
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { MaterialModule } from "../material/material.module";
     VeiculoViewComponent,
     VeiculoComponent,
     YesNoPipe,
+    MensagemComponent,
   ],
   imports: [
     CommonModule,

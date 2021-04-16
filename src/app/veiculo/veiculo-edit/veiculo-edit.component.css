@@ -15,10 +15,12 @@ mat-form-field {
     display: block;
     width: 60%;
     margin: 0 auto;
+    margin-bottom: 10px;
 }
 
 mat-card-actions {
-    text-align: center;
+  margin-top: 20px;
+  text-align: center;
 }
 
 button {
