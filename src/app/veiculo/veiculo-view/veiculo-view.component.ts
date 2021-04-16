@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { VeiculoService } from 'src/app/core/veiculo.service';
-import { Veiculo } from '../shared/veiculo';
+import { Veiculo } from '../veiculo';
 
 @Component({
   selector: 'app-veiculo-view',
@@ -19,7 +19,7 @@ export class VeiculoViewComponent implements OnInit {
         this.veiculoService.getVeiculo(params['id']).subscribe(veiculo => {
           this.veiculo = veiculo;
         });
-      }     
+      }
     });
   }
 

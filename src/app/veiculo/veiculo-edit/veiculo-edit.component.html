@@ -3,33 +3,33 @@
         <mat-card-title>{{ acao }} Veículo</mat-card-title>
 
         <mat-card-content>
-            <form #form="ngForm" (submit)="onSubmit(form)">
+            <form [formGroup]="veiculoForm" (submit)="onSubmit()">
                 <mat-form-field>
                     <mat-label>Veículo</mat-label>
-                    <input type="text" name="veiculo" [(ngModel)]="veiculo.veiculo" matInput required>
+                    <input type="text" formControlName="veiculo" matInput>
                 </mat-form-field>
 
                 <mat-form-field>
                     <mat-label>Marca</mat-label>
-                    <input type="text" name="marca" [(ngModel)]="veiculo.marca" matInput required>
+                    <input type="text" formControlName="marca" matInput>
                 </mat-form-field>
 
                 <mat-form-field>
                     <mat-label>Ano</mat-label>
-                    <input type="number" name="ano" [(ngModel)]="veiculo.ano" matInput required>
+                    <input type="number" formControlName="ano" matInput>
                 </mat-form-field>
 
                 <mat-form-field>
                     <mat-label>Descrição</mat-label>
-                    <textarea type="text" name="descricao" [(ngModel)]="veiculo.descricao" matInput required></textarea>
+                    <textarea type="text" formControlName="descricao" matInput></textarea>
                 </mat-form-field>
 
                 <mat-form-field>
                     <mat-label>Vendido</mat-label>
-                    <select name="vendido" matNativeControl [(ngModel)]="veiculo.vendido" required>
+                    <select matNativeControl formControlName="vendido">
                         <option option="#"></option>
                         <option value="1">Sim</option>
-                        <option value="0">Não</option>                    
+                        <option value="0">Não</option>
                       </select>
                 </mat-form-field>
 
@@ -39,6 +39,6 @@
                 </mat-card-actions>
             </form>
         </mat-card-content>
-    </mat-card>    
+    </mat-card>
 </div>
 
