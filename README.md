@@ -1,4 +1,15 @@
- Setup
+ # AppVeiculos
+
+Este projeto tem como objetivo o cadastro/edição de veículos.
+
+## Pré-requisitos
+
+- Angular CLI versão 11.1.4
+- Nodejs
+- MongoDB
+- Git
+- IDE de desenvolvimento (exemplo: VsCode)
+- IDE para consulta no banco de dados (exemplo: Robo3T, Compass) 
 
 ### Versionamento
 
