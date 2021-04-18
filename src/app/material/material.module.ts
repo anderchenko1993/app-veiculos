@@ -8,18 +8,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { MatListModule } from '@angular/material/list';
 
-const MaterialComponents = [
-  MatCardModule,
-  MatFormFieldModule,
-  MatInputModule,
-  MatButtonModule,
-  MatIconModule,
-  MatTableModule,
-  MatListModule,
-];
-
 @NgModule({
-  imports: [MaterialComponents],
-  exports: [MaterialComponents],
+  exports: [
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
+    MatTableModule,
+    MatListModule
+  ],
 })
 export class MaterialModule { }

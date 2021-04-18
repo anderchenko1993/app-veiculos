@@ -21,6 +21,9 @@ export class VeiculoListComponent implements OnInit {
   getAll() {
     this.veiculoService.getVeiculos().subscribe(data => {
       this.veiculos = data;
+    }, (error) => {
+      this.alertService.showAlertFail();
+      console.warn('Error', error);
     });
   }
 
